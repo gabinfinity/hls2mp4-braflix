@@ -1,8 +1,5 @@
-(function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ffmpeg/ffmpeg')) :
-    typeof define === 'function' && define.amd ? define(['exports', '@ffmpeg/ffmpeg'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.Hls2Mp4 = {}, global.FFmpeg));
-})(this, (function (exports, ffmpeg) { 'use strict';
+var Hls2Mp4 = (function (exports, ffmpeg, util) {
+    'use strict';
 
     /******************************************************************************
     Copyright (c) Microsoft Corporation.
@@ -18,7 +15,7 @@
     OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
     PERFORMANCE OF THIS SOFTWARE.
     ***************************************************************************** */
-    /* global Reflect, Promise, SuppressedError, Symbol */
+    /* global Reflect, Promise */
 
 
     function __awaiter(thisArg, _arguments, P, generator) {
@@ -70,11 +67,6 @@
         };
         throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
     }
-
-    typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
-        var e = new Error(message);
-        return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
-    };
 
     function getDefaultExportFromCjs (x) {
     	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
@@ -879,7 +871,6 @@
     var aesJsExports = aesJs.exports;
     var aesjs = /*@__PURE__*/getDefaultExportFromCjs(aesJsExports);
 
-    var fetchFile = ffmpeg.FFmpeg.fetchFile, toBlobURL = ffmpeg.FFmpeg.toBlobURL;
     exports.TaskType = void 0;
     (function (TaskType) {
         TaskType[TaskType["loadFFmeg"] = 0] = "loadFFmeg";
@@ -951,7 +942,7 @@
                         case 1:
                             playList = _d.sent();
                             return [3 /*break*/, 4];
-                        case 2: return [4 /*yield*/, fetchFile(url).then(function (data) { return aesjs.utils.utf8.fromBytes(data); })];
+                        case 2: return [4 /*yield*/, util.fetchFile(url).then(function (data) { return aesjs.utils.utf8.fromBytes(data); })];
                         case 3:
                             playList = _d.sent();
                             _d.label = 4;
@@ -1018,7 +1009,7 @@
                 var _b, done, data, fileName;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
-                        case 0: return [4 /*yield*/, this.loopLoadFile(function () { return fetchFile(url); })];
+                        case 0: return [4 /*yield*/, this.loopLoadFile(function () { return util.fetchFile(url); })];
                         case 1:
                             _b = _c.sent(), done = _b.done, data = _b.data;
                             if (done) {
@@ -1233,10 +1224,10 @@
                         case 0:
                             (_a = this.onProgress) === null || _a === void 0 ? void 0 : _a.call(this, exports.TaskType.loadFFmeg, 0);
                             baseUrl = this.ffmpegBaseUrl;
-                            return [4 /*yield*/, toBlobURL("".concat(baseUrl, "/ffmpeg-core.js"), 'text/javascript')];
+                            return [4 /*yield*/, util.toBlobURL("".concat(baseUrl, "/ffmpeg-core.js"), 'text/javascript')];
                         case 1:
                             coreURL = _c.sent();
-                            return [4 /*yield*/, toBlobURL("".concat(baseUrl, "/ffmpeg-core.wasm"), 'application/wasm')
+                            return [4 /*yield*/, util.toBlobURL("".concat(baseUrl, "/ffmpeg-core.wasm"), 'application/wasm')
                                 // workerURL = workerURL ?? await toBlobURL(`${baseUrl}/ffmpeg-core.worker.js`, 'text/javascript')
                             ];
                         case 2:
@@ -1309,4 +1300,6 @@
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+    return exports;
+
+})({}, FFmpeg, util);

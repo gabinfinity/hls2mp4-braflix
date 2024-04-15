@@ -1,4 +1,5 @@
 import { FFmpeg } from '@ffmpeg/ffmpeg';
+const { fetchFile, toBlobURL } = FFmpeg;
 
 /******************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -14,7 +15,7 @@ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
-/* global Reflect, Promise, SuppressedError, Symbol */
+/* global Reflect, Promise */
 
 
 function __awaiter(thisArg, _arguments, P, generator) {
@@ -66,11 +67,6 @@ function __values(o) {
     };
     throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 }
-
-typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
-    var e = new Error(message);
-    return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
-};
 
 function getDefaultExportFromCjs (x) {
 	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
@@ -875,7 +871,6 @@ var aesJs = {exports: {}};
 var aesJsExports = aesJs.exports;
 var aesjs = /*@__PURE__*/getDefaultExportFromCjs(aesJsExports);
 
-var fetchFile = FFmpeg.fetchFile, toBlobURL = FFmpeg.toBlobURL;
 var TaskType;
 (function (TaskType) {
     TaskType[TaskType["loadFFmeg"] = 0] = "loadFFmeg";
