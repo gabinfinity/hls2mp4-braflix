@@ -1,5 +1,5 @@
-import { FFmpeg } from '@ffmpeg/ffmpeg'
-import { fetchFile, toBlobURL } from '@ffmpeg/util'
+import { FFmpeg } from '@ffmpeg/ffmpeg';
+const { fetchFile, toBlobURL } = FFmpeg;
 import aesjs, { type ByteSource } from 'aes-js'
 
 export enum TaskType {
