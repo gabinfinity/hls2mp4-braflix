@@ -1,5 +1,5 @@
-import pkg from '@ffmpeg/util';
-const { fetchFile, toBlobURL } = pkg.default;
+const pkg = require('@ffmpeg/util');
+const { fetchFile, toBlobURL } = pkg;
 
 /******************************************************************************
 Copyright (c) Microsoft Corporation.
