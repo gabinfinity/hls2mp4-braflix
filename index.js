@@ -1,4 +1,4 @@
-const pkg = require('@ffmpeg/util');
+import pkg from '@ffmpeg/util';
 const { fetchFile, toBlobURL } = pkg;
 
 /******************************************************************************
