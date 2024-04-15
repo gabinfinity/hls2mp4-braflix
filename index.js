@@ -1,5 +1,5 @@
-import pkg from '@ffmpeg/util';
-const { fetchFile, toBlobURL } = pkg;
+import { FFmpeg } from '@ffmpeg/ffmpeg';
+const { fetchFile, toBlobURL } = FFmpeg;
 
 /******************************************************************************
 Copyright (c) Microsoft Corporation.
