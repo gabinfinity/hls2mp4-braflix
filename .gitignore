@@ -1,0 +1,11 @@
+# OSX
+.DS_Store
+
+# node modules
+node_modules/
+
+# roolup cache
+.rollup.cache/
+
+# typescript build info file
+.tsbuildinfo
